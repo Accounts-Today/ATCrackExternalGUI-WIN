@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,10 +25,6 @@ namespace ATCrackExtGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(licensePath))
-            {
-                File.Create(licensePath);
-            }
             if (File.Exists(licensePath))
             {
                 licenseBox.Text = File.ReadAllText(licensePath) == "" ? "License" : File.ReadAllText(licensePath);
@@ -80,7 +77,15 @@ namespace ATCrackExtGUI
                 MessageBox.Show("Invalid License!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            File.WriteAllText(licensePath, licenseBox.Text);
+            try
+            {
+                File.WriteAllText(licensePath, licenseBox.Text);
+            }
+            catch (IOException exception)
+            {
+                MessageBox.Show(exception.ToString());
+                throw;
+            }
             if (openUsernames.FileName == "")
             {
                 MessageBox.Show("Invalid Username file!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,18 +97,17 @@ namespace ATCrackExtGUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string args = " -jar External.jar -l " + licenseBox.Text + " -u " + openUsernames.FileName;
+            string args = " -jar External.jar -l " + licenseBox.Text + " -u \"" + openUsernames.FileName + "\"";
             if (!string.IsNullOrEmpty(saveHypixel.FileName))
             {
-                args += " -h " + saveHypixel.FileName;
+                args += " -h \"" + saveHypixel.FileName + "\"";
             }
             if (!string.IsNullOrEmpty(saveOptifine.FileName))
             {
-                args += " -o " + saveOptifine.FileName;
+                args += " -o \"" + saveOptifine.FileName + "\"";
             }
             if (RunningCheck())
             {
-                MessageBox.Show(args);
                 Process.Start("java", args);
                 Environment.Exit(0);
             }
