@@ -40,11 +40,12 @@
             this.openUsernames = new System.Windows.Forms.OpenFileDialog();
             this.saveOptifine = new System.Windows.Forms.SaveFileDialog();
             this.saveHypixel = new System.Windows.Forms.SaveFileDialog();
+            this.jpPleaseCommit = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // licenseBox
             // 
-            this.licenseBox.Location = new System.Drawing.Point(48, 134);
+            this.licenseBox.Location = new System.Drawing.Point(49, 145);
             this.licenseBox.Name = "licenseBox";
             this.licenseBox.Size = new System.Drawing.Size(153, 20);
             this.licenseBox.TabIndex = 0;
@@ -109,7 +110,7 @@
             // 
             // launchBtn
             // 
-            this.launchBtn.Location = new System.Drawing.Point(14, 169);
+            this.launchBtn.Location = new System.Drawing.Point(15, 180);
             this.launchBtn.Name = "launchBtn";
             this.launchBtn.Size = new System.Drawing.Size(221, 55);
             this.launchBtn.TabIndex = 7;
@@ -117,11 +118,22 @@
             this.launchBtn.UseVisualStyleBackColor = true;
             this.launchBtn.Click += new System.EventHandler(this.launchBtn_Click);
             // 
+            // jpPleaseCommit
+            // 
+            this.jpPleaseCommit.AutoSize = true;
+            this.jpPleaseCommit.Location = new System.Drawing.Point(15, 117);
+            this.jpPleaseCommit.Name = "jpPleaseCommit";
+            this.jpPleaseCommit.Size = new System.Drawing.Size(56, 17);
+            this.jpPleaseCommit.TabIndex = 8;
+            this.jpPleaseCommit.Text = "Export";
+            this.jpPleaseCommit.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 240);
+            this.ClientSize = new System.Drawing.Size(248, 249);
+            this.Controls.Add(this.jpPleaseCommit);
             this.Controls.Add(this.launchBtn);
             this.Controls.Add(this.hypixelBtn);
             this.Controls.Add(this.optifineBtn);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.OpenFileDialog openUsernames;
         private System.Windows.Forms.SaveFileDialog saveOptifine;
         private System.Windows.Forms.SaveFileDialog saveHypixel;
+        private System.Windows.Forms.CheckBox jpPleaseCommit;
     }
 }
 

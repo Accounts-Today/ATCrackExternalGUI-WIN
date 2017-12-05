@@ -106,6 +106,11 @@ namespace ATCrackExtGUI
             {
                 args += " -o \"" + saveOptifine.FileName + "\"";
             }
+            if (jpPleaseCommit.Checked)
+            {
+                args += " -e";
+            }
+            MessageBox.Show(args);
             if (RunningCheck())
             {
                 Process.Start("java", args);
